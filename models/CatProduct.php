@@ -2,6 +2,8 @@
 
 class CatProduct extends Product {
 
+    use Discount;
+
     private $icon = "<i class='fa-solid fa-cat'></i>";
 
     public function __construct($_name, $_image, $_price, $_category){

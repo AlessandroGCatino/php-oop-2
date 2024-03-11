@@ -17,6 +17,17 @@
         $item3
     ];
 
+    try {
+        
+        $item1->setDiscount(100, "%");
+
+    } catch (Exception $e) {
+
+        echo $e->getMessage();
+
+    }
+
+
     // echo "<pre>";
     // var_dump($arrayProdotti);
     // echo "</pre>";
@@ -58,9 +69,15 @@
                         <h4 class="card-title">
                             <?= $element->getName() ?>
                         </h4>
-                        <small class="card-text">
-                            Prezzo: €<?= $element->getPrice() ?> 
+                        <small class="card-text <?=($element->getDiscount() > 0) ? "text-decoration-line-through" : "" ?>">
+                            Prezzo: €<?= 
+                            $element->getPrice();?>
                         </small>
+                        <?php if ($element->getDiscount() > 0) : ?>
+                        <small class="text-danger"> 
+                            -<?=$element->getDiscount()?>
+                        </small>
+                        <?php endif ?>
                         <hr>
                         <small>
                             Categoria: <?= $element->getCategory() ?>
